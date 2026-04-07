@@ -30,12 +30,22 @@
     <button onclick="submitInterrest()">สิ่งทีสนใจ</button>
     
     <div>
+        <a id="thislink"  href="https://google.com" target="_blank" > Google </a>
 
     <script>
 
         let firstnameDOM=document.getElementById('firstname');
 
         console.log(firstnameDOM.value);
+
+        const btn = document.getElementById('submit_btn');
+
+        btn.addEventListener('click',submitData);
+
+        function submitData(){
+            console.log('ส่งข้อมูลแล้ว');
+        btn.setAttribute('disabled','true')
+        }
 
 //--------------------------------------------------------------------------
         console.log (document.getElementById('firstname').value);
@@ -66,6 +76,9 @@
         let contentDOM =document.getElementById('Newcontent');
         contentDOM.innerHTML=contenthtml;
     }
+    let thislinkdom = document.getElementById('thislink');
+    console.log(thislinkdom.getAttribute('href'));
+    thislinkdom.setAttribute('href' , ' https://youtube.com');
     
     </script>
 
