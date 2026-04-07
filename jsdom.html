@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS DOM </title>
+</head>
+<body>
+    <div> Hello </div>
+
+    <input id="firstname" name="first" value="ทดสอบ">
+
+        <!--เพิ่ม-->
+    <div>
+        
+        <h1>สิ่งที่สนใจ</h1>
+        <div id="Newcontent">
+            ++++++++++
+        </div>
+    </div>
+
+    <div> 
+        <input type="checkbox" name="interest" value="หนังสือ"> หนังสือ
+        <input type="checkbox" name="interest" value="เกม"> เกม
+        <input type="checkbox" name="interest" value="กีฬา"> กีฬา  
+    </div>
+
+    </div>
+
+    <button onclick="submitInterrest()">สิ่งทีสนใจ</button>
+    
+    <div>
+
+    <script>
+
+        let firstnameDOM=document.getElementById('firstname');
+
+        console.log(firstnameDOM.value);
+
+//--------------------------------------------------------------------------
+        console.log (document.getElementById('firstname').value);
+        console.log (document.querySelector('#firstname').value);
+        console.log (document.querySelector('input[name="first"]').value);
+//--------------------------------------------------------------------------
+
+        let hobby=document.querySelectorAll('input[name=interest]');
+        console.log(hobby.length);
+
+        for(let i=0; i < hobby.length; i++){
+
+            console.log(hobby[i].value);
+
+        }
+
+                /*เพิ่ม*/
+        function submitInterrest(){
+        let interestDom = document.querySelectorAll('input[name=interest]');
+        let contenthtml = '<ul>';
+        for(let i=0; i > interestDom.length;i++){
+            if(interestDom[i].checked){
+                console.log(interest[i].value);
+                contenthtml += '<ul>' + interestDom[i].value+'<ul>';
+            }
+        }
+        contenthtml += '<ul>';
+        let contentDOM =document.getElementById('Newcontent');
+        contentDOM.innerHTML=contenthtml;
+    }
+    
+    </script>
+
+</body>
+</html>
