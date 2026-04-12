@@ -3,83 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS DOM </title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,400;0,700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Kanit', sans-serif; }
+    </style>
+    <title>Student Registration</title>
 </head>
-<body>
-    <div> Hello </div>
+<body class="bg-gray-100 flex flex-col items-center">
 
-    <input id="firstname" name="first" value="ทดสอบ">
+    
+    
+    <nav class="sticky top-0 z-50 bg-white shadow-md p-4 mb-10 w-full">
 
-        <!--เพิ่ม-->
-    <div>
+        <div class="flex justify-between items-center px-6 md:px-10">
+
+            <div class="text-xl md:text-2xl font-bold text-blue-600 italic">PSU UNIVERSITY⋆˚꩜｡</div>
+
+            <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-medium">ลงทะเบียน</button>
         
-        <h1>สิ่งที่สนใจ</h1>
-        <div id="Newcontent">
-            ++++++++++
+        </div>
+    </nav>
+
+
+
+    <div id="registrationForm" class="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg mb-10">
+        
+        <h1 class="text-2xl text-blue-600 text-center lowercase italic mb-6">── .✦Student Registration✦. ── </h1>
+
+        <div class="space-y-4">
+
+
+            <div>
+                <p>ชื่อ-นามสกุล <span class="text-gray-500 text-sm">(Full-name)</span></p>
+                <input type="text" placeholder="กรอกชื่อ-นามสกุล" class="border-2 border-gray-300 rounded-lg p-2 w-full focus:border-blue-500 focus:outline-none">
+            </div>
+
+<!-- ==================================================================================================== -->
+        
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                <p>รหัสนักศึกษา <span class="text-gray-500 text-sm ">(Student ID)</span></p>
+                <input type="text" placeholder="รหัสนักศึกษา" class="border-2 border-gray-300 rounded-lg p-2 w-full focus:border-blue-500 focus:outline-none">
+            </div>
+
+            <div>
+                <p>คณะ/สาขา <span class="text-gray-500 text-sm ">(Major)</span></p>
+                <input type="text" placeholder="คณะ/สาขา" class=" border-2 border-gray-300 rounded-lg p-2 w-full focus:border-blue-500 focus:outline-none">
+            </div>
+            </div>
+
+<!-- ==================================================================================================== -->
+        
+            <div>
+                <p>อีเมล <span class="text-gray-500 text-sm">(Email)</span></p>
+                <input type="email" placeholder="อีเมล" class="border-2 border-gray-300 rounded-lg p-2 w-full focus:border-blue-500 focus:outline-none">
+            </div>
+            
+            <div>
+                <p>เบอร์โทรศัพท์ <span class="text-gray-500 text-sm">(Tel.)</span></p>
+                <input type="Tel." placeholder="เบอร์โทรศัพท์" class="border-2 border-gray-300 rounded-lg p-2 w-full focus:border-blue-500 focus:outline-none">
+            </div>
+
+            <button onclick="submitData()" class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-bold transition-all mt-4">
+                Submit Data 
+            </button>
+
         </div>
     </div>
 
-    <div> 
-        <input type="checkbox" name="interest" value="หนังสือ"> หนังสือ
-        <input type="checkbox" name="interest" value="เกม"> เกม
-        <input type="checkbox" name="interest" value="กีฬา"> กีฬา  
+
+    <div id="successMessage" class="hidden w-full max-w-md bg-white p-12 rounded-2xl shadow-lg text-center">
+        <h2 class="text-3xl font-bold text-green-600 mb-2">Submit Success!</h2>
+        <p class="text-gray-600 mb-6">Your Data is Submit Already</p>
+        
     </div>
-
-    </div>
-
-    <button onclick="submitInterrest()">สิ่งทีสนใจ</button>
-    
-    <div>
-        <a id="thislink"  href="https://google.com" target="_blank" > Google </a>
-
+<!--===============================================================================-->
     <script>
-
-        let firstnameDOM=document.getElementById('firstname');
-
-        console.log(firstnameDOM.value);
-
-        const btn = document.getElementById('submit_btn');
-
-        btn.addEventListener('click',submitData);
-
-        function submitData(){
-            console.log('ส่งข้อมูลแล้ว');
-        btn.setAttribute('disabled','true')
-        }
-
-//--------------------------------------------------------------------------
-        console.log (document.getElementById('firstname').value);
-        console.log (document.querySelector('#firstname').value);
-        console.log (document.querySelector('input[name="first"]').value);
-//--------------------------------------------------------------------------
-
-        let hobby=document.querySelectorAll('input[name=interest]');
-        console.log(hobby.length);
-
-        for(let i=0; i < hobby.length; i++){
-
-            console.log(hobby[i].value);
-
-        }
-
-                /*เพิ่ม*/
-        function submitInterrest(){
-        let interestDom = document.querySelectorAll('input[name=interest]');
-        let contenthtml = '<ul>';
-        for(let i=0; i > interestDom.length;i++){
-            if(interestDom[i].checked){
-                console.log(interest[i].value);
-                contenthtml += '<ul>' + interestDom[i].value+'<ul>';
-            }
-        }
-        contenthtml += '<ul>';
-        let contentDOM =document.getElementById('Newcontent');
-        contentDOM.innerHTML=contenthtml;
-    }
-    let thislinkdom = document.getElementById('thislink');
-    console.log(thislinkdom.getAttribute('href'));
-    thislinkdom.setAttribute('href' , ' https://youtube.com');
-    
+        function submitData() 
+        { document.getElementById('registrationForm').classList.add('hidden');
+          document.getElementById('successMessage').classList.remove('hidden');}
     </script>
 
 </body>
